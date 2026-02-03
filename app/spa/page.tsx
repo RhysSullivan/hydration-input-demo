@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { SPAInput } from "./spa-input";
 
 export default function SPAPage() {
@@ -15,13 +14,12 @@ export default function SPAPage() {
           </p>
         </div>
 
-        {/* Hydration status */}
+        {/* Hydration status - updated by client component */}
         <div
           id="hydration-status"
           className="flex items-center justify-center gap-3 rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900"
         >
-          <div className="h-5 w-5 animate-spin rounded-full border-2 border-amber-500 border-t-transparent" />
-          <span className="font-medium text-amber-600">Loading input component...</span>
+          <span className="font-medium text-zinc-400">Waiting for JS...</span>
         </div>
 
         <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
@@ -44,21 +42,7 @@ export default function SPAPage() {
               SPA Pattern: Client-only input
             </span>
           </div>
-          <Suspense
-            fallback={
-              <div className="flex flex-col gap-2">
-                <div className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                  SPA Input
-                </div>
-                <div className="h-10 animate-pulse rounded-lg bg-zinc-200 dark:bg-zinc-700" />
-                <p className="text-xs text-amber-600 dark:text-amber-400">
-                  Loading component...
-                </p>
-              </div>
-            }
-          >
-            <SPAInput />
-          </Suspense>
+          <SPAInput />
         </div>
 
         <div className="rounded-xl border border-zinc-200 bg-zinc-100 p-6 dark:border-zinc-800 dark:bg-zinc-900">
